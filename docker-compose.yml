@@ -9,11 +9,10 @@ services:
       - "5000:5000"
   db:
     image: postgres:16
-    container_name: db-service
     environment:
-      POSTGRES_USER: user
-      POSTGRES_PASSWORD: pass
-      POSTGRES_DB: testdb
+      POSTGRES_DB: docker
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
     volumes:
       - pgdata:/var/lib/postgresql/data
 volumes:
