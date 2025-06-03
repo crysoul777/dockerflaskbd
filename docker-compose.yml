@@ -1,0 +1,20 @@
+version: '3.8'
+services:
+  app:
+    build: .
+    container_name: app-service
+    depends_on:
+      - db
+    ports:
+      - "5000:5000"
+  db:
+    image: postgres:16
+    container_name: db-service
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pass
+      POSTGRES_DB: testdb
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+volumes:
+  pgdata:
