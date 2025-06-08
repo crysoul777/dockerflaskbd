@@ -34,7 +34,7 @@ conn.commit()
 
 @app.route('/')
 def index():
-    return "👋 Привет из Flask!"
+    return "🔥 Обновлено через CI/CD!"
 
 @app.route('/data', methods=['GET'])
 def get_data():
