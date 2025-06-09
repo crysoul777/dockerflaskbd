@@ -34,7 +34,7 @@ conn.commit()
 
 @app.route('/')
 def index():
-    return "🔥 Обновлено через self-hosted CI/CD!"
+    return "111🔥 Обновлено через self-hosted CI/CD!"
 
 @app.route('/data', methods=['GET'])
 def get_data():
