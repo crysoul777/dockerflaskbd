@@ -7,22 +7,15 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Set up SSH
-      uses: webfactory/ssh-agent@v0.8.0
-      with:
-        ssh-private-key: ${{ secrets.KEY }}
-
-    - name: Deploy to server
+    - name: Deploy app
       run: |
-        ssh -o StrictHostKeyChecking=no ${{ secrets.USER }}@${{ secrets.HOST }} << 'EOF'
-          cd compose-test
-          git pull origin main
-          docker-compose down --volumes --remove-orphans
-          docker-compose up -d --build
-        EOF
+        cd ~/compose-test
+        git pull origin main
+        docker-compose down --volumes --remove-orphans
+        docker-compose up -d --build
